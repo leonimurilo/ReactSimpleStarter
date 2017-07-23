@@ -15,16 +15,25 @@ import React from "react";
 // class based component (ES6 class. An object with methods and properties)
 // It's used whenever you want a component to have some type of internal record
 // It has the ability to be aware of itself, what is happening to it since it has been rendered
+// and can communicate with other components
 
 // Uses prototype inheritance to have all the properties and methods a component should have
 // every react class based component must have its render method
 class SearchBar extends React.Component{
     render(){
         return (
-            <input/>
+            <input onChange={this.onInputChange}/>
         );
     }
+
+    // handling events in react has two steps:
+    // declare an event handler (event callback)
+    // second, we pass the event handler to the element that we want to monitor
+    onInputChange(event) {
+        console.log(event.target.value);
+    }
 }
+
 
 
 export default SearchBar;

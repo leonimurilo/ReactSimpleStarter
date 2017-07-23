@@ -1,6 +1,7 @@
 import React from "react"; // core react library that knows how to work with components
 import ReactDOM from "react-dom" // separated lib that is responsible to insert the component into the DOM
 
+
 // create a new class of a component (not an instance) that should produce some html
 const App = () => {
   return <div>Hi!</div>

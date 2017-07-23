@@ -20,9 +20,30 @@ import React from "react";
 // Uses prototype inheritance to have all the properties and methods a component should have
 // every react class based component must have its render method
 class SearchBar extends React.Component{
+
+    // State is a plain javascript object that is used to record and react to user events
+    // each class based component that we define, has its own state object
+    // whenever a component state is changed, the component immediately renders
+    // and also forces all of its children to render as well
+
+    constructor(props){
+        super(props);
+        // constructor is the only place we can mutate the state directly using assignment
+        this.state = {
+            term: ""
+        };
+    }
     render(){
+        // A controlled field is a form element (like input) whose value is set by the state rather than the other way around
+        // when we set the value of the input to a state property, we are saying that instead of setting its text by its own,
+        // the input text/value will be what the state will be. And when we update the state with the onChange,
+        // we have a controlled element.
         return (
-            <input onChange={this.onInputChange}/>
+        <div>
+            <input
+                value={this.state.term}
+                onChange={this.onInputChange.bind(this)}/>
+        </div>
         );
     }
 
@@ -30,9 +51,10 @@ class SearchBar extends React.Component{
     // declare an event handler (event callback)
     // second, we pass the event handler to the element that we want to monitor
     onInputChange(event) {
-        console.log(event.target.value);
+        this.setState({term: event.target.value});
     }
 }
+
 
 
 

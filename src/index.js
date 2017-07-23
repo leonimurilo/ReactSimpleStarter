@@ -1,15 +1,13 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
-import { createStore, applyMiddleware } from 'redux';
+import React from "react"; // core react library that knows how to work with components
+import ReactDOM from "react-dom" // separated lib that is responsible to insert the component into the DOM
 
-import App from './components/app';
-import reducers from './reducers';
+// create a new class of a component (not an instance) that should produce some html
+const App = () => {
+  return <div>Hi!</div>
+};
 
-const createStoreWithMiddleware = applyMiddleware()(createStore);
 
-ReactDOM.render(
-  <Provider store={createStoreWithMiddleware(reducers)}>
-    <App />
-  </Provider>
-  , document.querySelector('.container'));
+// take the component and put it on the page (in the DOM)
+// note that the jsx tag with the component name makes an instance of the class "App" na pass it as the first argument
+// the second argument is a reference to an existing DOM node on the page
+ReactDOM.render(<App />, document.querySelector(".container"));

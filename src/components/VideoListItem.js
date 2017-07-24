@@ -1,7 +1,7 @@
 /**
  * Created by Leoni on 7/23/2017.
  */
-import React from "React";
+import React from "react";
 
 const VideoListItem = (props) => {
     return (

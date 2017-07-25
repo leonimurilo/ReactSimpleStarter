@@ -1,6 +1,7 @@
 import React, {Component} from "react"; // core react library that knows how to work with components
 import YTSearch from "youtube-api-search";
 import ReactDOM from "react-dom"; // separated lib that is responsible to insert the component into the DOM
+import _ from "lodash";
 
 import SearchBar from "./components/SearchBar";
 import VideoList from "./components/VideoList";
@@ -52,10 +53,12 @@ class App extends Component {
     // when the thing gets bigger it is better to think about another approach
 
     render(){
+        // function the uses the debounce (lodash function) to create a function that can only be called once every 300ms
+        const videoSearch = _.debounce((term) => {this.videoSearch(term)}, 300);
         return (
             <div>
                 <SearchBar
-                    onSearchTermChange={term => this.videoSearch(term)}
+                    onSearchTermChange={videoSearch}
                 />
                 <VideoDetail video={this.state.selectedVideo}/>
                 <VideoList

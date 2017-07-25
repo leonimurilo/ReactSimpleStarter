@@ -21,7 +21,13 @@ class App extends Component {
             selectedVideo: null // passed into VideoDetail
         };
 
-        YTSearch({key: API_KEY, term: "guns n roses"}, videos => {
+        this.videoSearch("guns n roses");
+
+    }
+
+    videoSearch(term) {
+        YTSearch({key: API_KEY, term: term}, videos => {
+            console.log(term);
             console.log(videos);
             this.setState(
                 {
@@ -30,7 +36,6 @@ class App extends Component {
                 }
             );
         });
-
     }
 
     // we can pass data from the parent component (app) to the child just by
@@ -49,7 +54,9 @@ class App extends Component {
     render(){
         return (
             <div>
-                <SearchBar/>
+                <SearchBar
+                    onSearchTermChange={term => this.videoSearch(term)}
+                />
                 <VideoDetail video={this.state.selectedVideo}/>
                 <VideoList
                     onVideoSelect={selectedVideo => {this.setState({selectedVideo})}}

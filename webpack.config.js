@@ -20,9 +20,11 @@ module.exports = {
     extensions: ['', '.js', '.jsx']
   },
   devServer: {
+      disableHostCheck: true,
       watchOptions:{
           pool: true
       },
+    host: "0.0.0.0",
     port: 8085,
     historyApiFallback: true,
     contentBase: './'

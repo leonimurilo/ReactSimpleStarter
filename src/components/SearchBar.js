@@ -42,7 +42,7 @@ class SearchBar extends React.Component{
         <div className="search-bar">
             <input
                 value={this.state.term}
-                onChange={this.onInputChange.bind(this)}/>
+                onChange={event => this.onInputChange(event.target.value)}/>
         </div>
         );
     }
@@ -50,8 +50,9 @@ class SearchBar extends React.Component{
     // handling events in react has two steps:
     // declare an event handler (event callback)
     // second, we pass the event handler to the element that we want to monitor
-    onInputChange(event) {
-        this.setState({term: event.target.value});
+    onInputChange(term) {
+        this.setState({term}); // used specially to feed the controlled input
+        this.props.onSearchTermChange(term); // used as a callback to app. This allows the app to reuse the yt api and search
     }
 }
 

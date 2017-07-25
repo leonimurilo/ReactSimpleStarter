@@ -39,7 +39,7 @@ class SearchBar extends React.Component{
         // the input text/value will be what the state will be. And when we update the state with the onChange,
         // we have a controlled element.
         return (
-        <div>
+        <div className="search-bar">
             <input
                 value={this.state.term}
                 onChange={this.onInputChange.bind(this)}/>

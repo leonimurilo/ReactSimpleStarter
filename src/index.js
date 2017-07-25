@@ -3,7 +3,8 @@ import YTSearch from "youtube-api-search";
 import ReactDOM from "react-dom"; // separated lib that is responsible to insert the component into the DOM
 
 import SearchBar from "./components/SearchBar";
-import VideoList from "./components/VideoList"
+import VideoList from "./components/VideoList";
+import VideoDetail from "./components/VideoDetail";
 
 import apiKey from "../apiKey";
 
@@ -34,6 +35,7 @@ class App extends Component {
         return (
             <div>
                 <SearchBar/>
+                <VideoDetail video={this.state.videos[0]}/>
                 <VideoList videos={this.state.videos}/>
             </div>
         );

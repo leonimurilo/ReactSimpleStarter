@@ -13,7 +13,13 @@ import VideoListItem from "./VideoListItem";
 const VideoList = (props) => {
     // Get the map() function return that contains an VideoListItem component for every video of props
     const videoItems = props.videos.map((video) => {
-        return <VideoListItem key={video.etag} video={video}/>
+        return (
+            <VideoListItem
+                onVideoSelect={props.onVideoSelect}
+                key={video.etag}
+                video={video}
+            />
+        )
     });
 
     // use curly braces to use javaScript variables inside the JSX code
